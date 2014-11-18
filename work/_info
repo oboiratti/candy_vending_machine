@@ -1,0 +1,347 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\projects\verilog\candy_vending_system
+vbcd_to_seven_seg_dec
+Z1 !s100 eP5R?A4SNXbfhYe>Z10al0
+Z2 I`f_VJX5Gdo]ggI42XDdh81
+Z3 VK5@LLZ5BRA<7?fooiPf1E0
+Z4 dE:\projects\verilog\candy_vending_system
+Z5 w1415888269
+Z6 8rtl/bcd_to_seven_seg_dec.v
+Z7 Frtl/bcd_to_seven_seg_dec.v
+L0 21
+Z8 OL;L;10.1c;51
+r1
+31
+Z9 !s90 -reportprogress|300|rtl/bcd_to_seven_seg_dec.v|
+Z10 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+Z11 !s108 1416277518.566000
+Z12 !s107 rtl/bcd_to_seven_seg_dec.v|
+!i10b 1
+!s85 0
+vbcd_to_seven_seg_dec_tb
+Z13 I_;MHC[]X_`injSoCV_OCc2
+Z14 V9T9<ob`d^`j6XWhDW<6M]0
+R4
+Z15 w1415177826
+Z16 8rtl/bcd_to_seven_seg_dec_tb.v
+Z17 Frtl/bcd_to_seven_seg_dec_tb.v
+L0 25
+R8
+r1
+31
+Z18 !s90 -reportprogress|300|rtl/bcd_to_seven_seg_dec_tb.v|
+R10
+Z19 !s100 99NJdlYC750WgL4`jXLED2
+Z20 !s108 1415177878.147000
+Z21 !s107 rtl/bcd_to_seven_seg_dec_tb.v|
+!i10b 1
+!s85 0
+vcandy_control
+Z22 I3bQcH<:fdT=dX7H:IPJkD3
+Z23 V0S:P;FkOWkWD;G687VROA3
+R4
+Z24 w1416277726
+Z25 8E:/projects/verilog/candy_vending_system/rtl/candy_control.v
+Z26 FE:/projects/verilog/candy_vending_system/rtl/candy_control.v
+L0 21
+R8
+r1
+31
+Z27 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+Z28 !s100 ?>NZ?`XfjN>h_[6^;ikIY2
+Z29 !s108 1416277737.257000
+Z30 !s107 E:/projects/verilog/candy_vending_system/rtl/candy_control.v|
+Z31 !s90 -reportprogress|300|-work|work|E:/projects/verilog/candy_vending_system/rtl/candy_control.v|
+!i10b 1
+!s85 0
+vcandy_control_tb
+Z32 !s100 ?Kdja;eGzcNUQ3VlW=hf72
+Z33 I]@83ebi81BX0fC2hL5SP_3
+Z34 VdX_=2_h7cjMkAAGLbm7le0
+R4
+Z35 w1416214726
+Z36 8rtl/candy_control_tb.v
+Z37 Frtl/candy_control_tb.v
+L0 25
+R8
+r1
+31
+Z38 !s90 -reportprogress|300|rtl/candy_control_tb.v|
+R10
+Z39 !s108 1416274764.782000
+Z40 !s107 rtl/candy_control_tb.v|
+!i10b 1
+!s85 0
+vcandy_top
+Z41 !s100 RNAhQ8ziKHCeOn=CzY>Xo1
+Z42 I_MOnYn31RVY[?:F36gEjh3
+Z43 VP@IRLB@d;_kTfXnO8WWnC2
+R4
+Z44 w1416206570
+Z45 8rtl/candy_top.v
+Z46 Frtl/candy_top.v
+L0 21
+R8
+r1
+31
+Z47 !s90 -reportprogress|300|rtl/candy_top.v|
+R10
+Z48 !s108 1416277519.329000
+Z49 !s107 rtl/candy_top.v|
+!i10b 1
+!s85 0
+vcandy_top_tb
+!i10b 1
+!s100 <SFYomc3b2hb@KThWi9P51
+IJTf0A2V0flbbg?V;cM[Rg0
+Z50 VI<XAmJZlQBc=Im=o?U?0F2
+R4
+w1416278208
+Z51 8E:/projects/verilog/candy_vending_system/rtl/candy_top_tb.v
+Z52 FE:/projects/verilog/candy_vending_system/rtl/candy_top_tb.v
+L0 25
+R8
+r1
+!s85 0
+31
+!s108 1416278214.387000
+!s107 E:/projects/verilog/candy_vending_system/rtl/candy_top_tb.v|
+Z53 !s90 -reportprogress|300|-work|work|E:/projects/verilog/candy_vending_system/rtl/candy_top_tb.v|
+R27
+vclock_divider_1khz_to_1hz
+Z54 !s100 2GjMBm;5jfDW8@Yo:C=e70
+Z55 Ii`FbJ^b_9VFJmcG6c]>Wf3
+Z56 V=ECGZXF87UoUazkV4Q9H<2
+R4
+Z57 w1416213236
+Z58 8rtl/clock_divider_1khz_to_1hz.v
+Z59 Frtl/clock_divider_1khz_to_1hz.v
+L0 21
+R8
+r1
+31
+Z60 !s90 -reportprogress|300|rtl/clock_divider_1khz_to_1hz.v|
+R10
+Z61 !s108 1416277519.079000
+Z62 !s107 rtl/clock_divider_1khz_to_1hz.v|
+!i10b 1
+!s85 0
+vclock_divider_1khz_to_1hz_tb
+Z63 !s100 5WOS<KhEW2K_EV7NIgWzM0
+Z64 IZhcck;Yb6HhDi[E`V541h1
+Z65 VgHSDeJT57lfD=7]@Z2R:g2
+R4
+Z66 w1415264357
+Z67 8rtl/clock_divider_1khz_to_1hz_tb.v
+Z68 Frtl/clock_divider_1khz_to_1hz_tb.v
+L0 25
+R8
+r1
+31
+Z69 !s90 -reportprogress|300|rtl/clock_divider_1khz_to_1hz_tb.v|
+R10
+Z70 !s108 1415880021.012000
+Z71 !s107 rtl/clock_divider_1khz_to_1hz_tb.v|
+!i10b 1
+!s85 0
+vdebouncer
+Z72 !s100 f@:RQj<2VRMI?Jh@R4Nog2
+Z73 I@2DO_HNBjjZO4LBk5RX^L0
+Z74 VVT223;FFT0^1:;1SA5VNf1
+R4
+Z75 w1416205123
+Z76 8rtl/debouncer.v
+Z77 Frtl/debouncer.v
+L0 21
+R8
+r1
+31
+Z78 !s90 -reportprogress|300|rtl/debouncer.v|
+R10
+Z79 !s108 1416277519.009000
+Z80 !s107 rtl/debouncer.v|
+!i10b 1
+!s85 0
+vdebouncer_tb
+Z81 I0ZT1A7bmQ;XZC311AAnUk1
+Z82 V_Yj>7C<FEgYdEaDN>ihGS3
+R4
+Z83 w1416204944
+Z84 8rtl/debouncer_tb.v
+Z85 Frtl/debouncer_tb.v
+L0 25
+R8
+r1
+31
+Z86 !s90 -reportprogress|300|rtl/debouncer_tb.v|
+R10
+Z87 !s100 LIXIU[4>mQ3GElHhY3I]70
+Z88 !s108 1416205027.355000
+Z89 !s107 rtl/debouncer_tb.v|
+!i10b 1
+!s85 0
+vglbl
+Z90 !s100 17@9_k`NgKI51b1@Wdc=[2
+Z91 Ik_:bjFDfkc<;a]@957JJ;2
+Z92 VM[9mS]S:KA1i4VeCMX35[3
+R4
+Z93 w1350088039
+Z94 8C:/Xilinx/14.3/ISE_DS/ISE//verilog/src/glbl.v
+Z95 FC:/Xilinx/14.3/ISE_DS/ISE//verilog/src/glbl.v
+L0 5
+R8
+r1
+31
+Z96 !s90 -reportprogress|300|C:/Xilinx/14.3/ISE_DS/ISE//verilog/src/glbl.v|
+R10
+Z97 !s108 1416277519.619000
+Z98 !s107 C:/Xilinx/14.3/ISE_DS/ISE//verilog/src/glbl.v|
+!i10b 1
+!s85 0
+vkey_map
+Z99 !s100 5MIhkzM8QNO]6XZUd=0b32
+Z100 IFP=cZOgY>@o:W9O>M9:_52
+Z101 VESDH38PRE[]K[Un<lK@Fi2
+R4
+Z102 w1416227838
+Z103 8rtl/key_map.v
+Z104 Frtl/key_map.v
+L0 21
+R8
+r1
+31
+Z105 !s90 -reportprogress|300|rtl/key_map.v|
+R10
+Z106 !s108 1416277518.806000
+Z107 !s107 rtl/key_map.v|
+!i10b 1
+!s85 0
+vkey_map_tb
+Z108 IFhnchzCR]o2dChYi082B>2
+Z109 Vfki4IG?D_04ZTFbcFGnR20
+R4
+Z110 w1416193777
+Z111 8rtl/key_map_tb.v
+Z112 Frtl/key_map_tb.v
+L0 25
+R8
+r1
+31
+R10
+Z113 !s100 IzU;7mPeF[Vmee`VXJ6220
+Z114 !s108 1416193873.649000
+Z115 !s107 rtl/key_map_tb.v|
+Z116 !s90 -reportprogress|300|rtl/key_map_tb.v|
+!i10b 1
+!s85 0
+vseven_seg_mux
+Z117 !s100 g>GE4Whnmj?Mcnaj;;ncF3
+Z118 IVT3]@45A2VBaTUKLelm8Q2
+Z119 V@;DPm;JRCbQJh5]d_iXed3
+R4
+Z120 w1416227759
+Z121 8rtl/seven_seg_mux.v
+Z122 Frtl/seven_seg_mux.v
+L0 21
+R8
+r1
+31
+Z123 !s90 -reportprogress|300|rtl/seven_seg_mux.v|
+R10
+Z124 !s108 1416277518.446000
+Z125 !s107 rtl/seven_seg_mux.v|
+!i10b 1
+!s85 0
+vseven_seg_mux_tb
+Z126 !s100 e@?YPN2bHjR`dCnb=BGF10
+Z127 I>4h^ndVWgVzGGmzKK2N?Q0
+Z128 V`Uh_OZe:S>H[AU]1aL@VW3
+R4
+Z129 w1416189357
+Z130 8rtl/seven_seg_mux_tb.v
+Z131 Frtl/seven_seg_mux_tb.v
+L0 25
+R8
+r1
+31
+Z132 !s90 -reportprogress|300|rtl/seven_seg_mux_tb.v|
+R10
+Z133 !s108 1416189401.719000
+Z134 !s107 rtl/seven_seg_mux_tb.v|
+!i10b 1
+!s85 0
+vseven_seg_mux_timing_gen
+Z135 !s100 ZhQe3<]mUlQXjg?Rcn0CL3
+Z136 I=>jHOzDe[mbLb4iUPlNHM2
+Z137 VL9`_5d6cbWX[SE5>k]VLh1
+R4
+Z138 w1416188905
+Z139 8rtl/seven_seg_mux_timing_gen.v
+Z140 Frtl/seven_seg_mux_timing_gen.v
+L0 21
+R8
+r1
+31
+Z141 !s90 -reportprogress|300|rtl/seven_seg_mux_timing_gen.v|
+R10
+Z142 !s108 1416277518.336000
+Z143 !s107 rtl/seven_seg_mux_timing_gen.v|
+!i10b 1
+!s85 0
+vseven_seg_mux_timing_gen_tb
+Z144 IUb028IT7`M^iXHf^5MS4m1
+Z145 VL@`5?;2@POSb6ZSk?famR1
+R4
+Z146 w1416188899
+Z147 8rtl/seven_seg_mux_timing_gen_tb.v
+Z148 Frtl/seven_seg_mux_timing_gen_tb.v
+L0 25
+R8
+r1
+31
+Z149 !s90 -reportprogress|300|rtl/seven_seg_mux_timing_gen_tb.v|
+R10
+Z150 !s100 4=IGAIan4CTXHkZCW3EdG0
+Z151 !s108 1416188940.899000
+Z152 !s107 rtl/seven_seg_mux_timing_gen_tb.v|
+!i10b 1
+!s85 0
+vseven_seg_top
+Z153 !s100 @h8TJ^I2YO8nOFh=4VzkJ3
+Z154 I3NZnn5EJ^?ijW<nnhQD7]1
+Z155 V3Hz?DKd94bWHR8WKn7nQk2
+R4
+Z156 w1416189855
+Z157 8rtl/seven_seg_top.v
+Z158 Frtl/seven_seg_top.v
+L0 21
+R8
+r1
+31
+Z159 !s90 -reportprogress|300|rtl/seven_seg_top.v|
+R10
+Z160 !s108 1416277518.686000
+Z161 !s107 rtl/seven_seg_top.v|
+!i10b 1
+!s85 0
+vseven_seg_top_tb
+Z162 ISDLg]oT?1SL`n]UZzbMRA0
+Z163 VMK@=bbkQAUOo6>@oBj47L1
+R4
+Z164 w1416190227
+Z165 8E:/projects/verilog/candy_vending_system/rtl/seven_seg_top_tb.v
+Z166 FE:/projects/verilog/candy_vending_system/rtl/seven_seg_top_tb.v
+L0 25
+R8
+r1
+31
+R27
+Z167 !s100 8P02gLf`3BMIWiP3eHDQ52
+Z168 !s108 1416190301.825000
+Z169 !s107 E:/projects/verilog/candy_vending_system/rtl/seven_seg_top_tb.v|
+Z170 !s90 -reportprogress|300|-work|work|E:/projects/verilog/candy_vending_system/rtl/seven_seg_top_tb.v|
+!i10b 1
+!s85 0

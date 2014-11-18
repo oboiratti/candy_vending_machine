@@ -1,0 +1,9 @@
+MO clock_divider_1khz_to_1hz NULL rtl/clock_divider_1khz_to_1hz.v vlg43/clock__divider__1khz__to__1hz.bin 1416272827
+MO seven_seg_top NULL rtl/seven_seg_top.v vlg51/seven__seg__top.bin 1416272827
+MO key_map NULL rtl/key_map.v vlg72/key__map.bin 1416272827
+MO bcd_to_seven_seg_dec NULL rtl/bcd_to_seven_seg_dec.v vlg10/bcd__to__seven__seg__dec.bin 1416272827
+MO seven_seg_mux NULL rtl/seven_seg_mux.v vlg48/seven__seg__mux.bin 1416272827
+MO candy_top NULL rtl/candy_top.v vlg5D/candy__top.bin 1416272827
+MO seven_seg_mux_timing_gen NULL rtl/seven_seg_mux_timing_gen.v vlg0C/seven__seg__mux__timing__gen.bin 1416272827
+MO debouncer NULL rtl/debouncer.v vlg03/debouncer.bin 1416272827
+MO candy_control NULL rtl/candy_control.v vlg6F/candy__control.bin 1416272827
