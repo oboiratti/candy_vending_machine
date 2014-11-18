@@ -1,3 +1,3 @@
-candy_vending_machine
+Candy Vending Machine
 =====================
 Candy Vending Machine uisng Verilog
