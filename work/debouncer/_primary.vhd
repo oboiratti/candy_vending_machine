@@ -4,7 +4,7 @@ entity debouncer is
     port(
         clk             : in     vl_logic;
         reset           : in     vl_logic;
-        keyin           : in     vl_logic_vector(2 downto 0);
-        keyout          : out    vl_logic_vector(2 downto 0)
+        key_in          : in     vl_logic_vector(3 downto 0);
+        key_out         : out    vl_logic_vector(3 downto 0)
     );
 end debouncer;

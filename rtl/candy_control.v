@@ -39,6 +39,7 @@ localparam idle = 4'b0000, one = 4'b0001, two = 4'b0010,
 localparam candy_button_pressed = 3'b101, change_button_pressed = 3'b110;
 reg [3:0] ps, ns;
 reg [2:0] count;
+// reg [2:0] temp_count;
 reg [7:0] sum_out;
 
 always @(posedge clk or posedge reset)
@@ -58,7 +59,7 @@ always @(*)
                   // candy = 1'b0; 
                   if (in == beg) ns = two;
                   else if (in == obeg) ns = six;
-                  // else if (in == no_coin) ns = ps;
+                  else if (in == change_button_pressed) ns = idle;
                   else ns = ps;
                 end
 
@@ -165,8 +166,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     one:        begin
-                  sum_out <= {4'b1010, one};
-                  if (candy) begin
+                  sum_out <= {4'b1110, one};
+                  if (count > 0) begin
                     change_beg <= 3'b001;
                     change_obeg <= 1'b0;
                     candy <= 1'b0;
@@ -329,12 +330,16 @@ always @ (posedge clk or posedge reset) begin
 end
 
 //  count the number of candies
-always @(posedge clk or posedge reset) begin
-  if (reset)
+always @(negedge clk) begin
+  if (reset) begin
     count <= 3'b000;
+    // temp_count <= 3'b000;
+  end
   else begin
-    if (candy && in == candy_button_pressed && ps != idle)
+    if (candy) begin
       count <= count + 1;
+      // temp_count <= count;
+    end
     else count <= 3'b000;
   end
 end

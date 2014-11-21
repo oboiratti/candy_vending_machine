@@ -27,28 +27,21 @@ module seven_seg_top_tb;
 	// Inputs
 	reg clk;
 	reg reset;
-	reg [3:0] data_in5;
-	reg [3:0] data_in4;
-	reg [3:0] data_in3;
-	reg [3:0] data_in2;
-	reg [3:0] data_in1;
-	reg [3:0] data_in0;
+	reg [7:0] sum;
+  reg [2:0] candy_sum;
+  
 
 	// Outputs
-	wire [5:0] addr;
+	wire [7:0] display_column;
 	wire [7:0] out;
 
 	// Instantiate the Unit Under Test (UUT)
 	seven_seg_top uut (
 		.clk(clk), 
 		.reset(reset), 
-		.data_in5(data_in5), 
-		.data_in4(data_in4), 
-		.data_in3(data_in3), 
-		.data_in2(data_in2), 
-		.data_in1(data_in1), 
-		.data_in0(data_in0), 
-		.addr(addr), 
+		.sum(sum), 
+		.candy_sum(candy_sum),  
+		.display_column(display_column), 
 		.out(out)
 	);
 
@@ -67,12 +60,8 @@ module seven_seg_top_tb;
 		
 		// MIN + {$random} % (MAX - MIN) - random numbers between MIN and MAX
 		for(i = 0; i < 10; i = i + 1) begin
-			data_in5 = {$random} % 10;
-			data_in4 = {$random} % 10;
-			data_in3 = {$random} % 10;	
-			data_in2 = {$random} % 10;
-			data_in1 = {$random} % 10;
-			data_in0 = {$random} % 10;
+			sum = {$random} % 10;
+			candy_sum = {$random} % 10;
 			#50;
 		end
 
