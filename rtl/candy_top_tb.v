@@ -27,8 +27,6 @@ module candy_top_tb;
 	// Inputs
 	reg clk;
 	reg reset;
-	// reg [1:0] coin;
-	// reg [1:0] btn;
 	reg [3:0] key_in;
 
 	// Outputs
@@ -38,6 +36,7 @@ module candy_top_tb;
 	wire [2:0] change_beg;
 	wire change_obeg;
 	wire [2:0] col;
+	wire [4:0] can_buy;
 
 	// Instantiate the Unit Under Test (UUT)
 	candy_top uut (
@@ -51,7 +50,8 @@ module candy_top_tb;
 		.candy(candy), 
 		.change_beg(change_beg), 
 		.change_obeg(change_obeg),
-		.col(col)
+		.col(col),
+		.can_buy(can_buy)
 	);
 
 	parameter clk_period = 20;

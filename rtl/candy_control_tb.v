@@ -35,8 +35,9 @@ module candy_control_tb;
 	wire candy;
 	wire [2:0] change_beg;
 	wire change_obeg;
-	wire [7:0] sum;
+	wire [3:0] sum;
 	wire [2:0] candy_sum;
+	wire [4:0] can_buy;
 
 	// Instantiate the Unit Under Test (UUT)
 	candy_control uut (
@@ -49,13 +50,14 @@ module candy_control_tb;
 		.change_beg(change_beg), 
 		.change_obeg(change_obeg),
 		.sum(sum),
-		.candy_sum(candy_sum)
+		.candy_sum(candy_sum),
+		.can_buy(can_buy)
 	);
 
 	parameter clk_period = 10;
 	integer i;
-	reg [1:0] get_coin;
-	reg [1:0] get_btn;
+	// reg [1:0] get_coin;
+	// reg [1:0] get_btn;
 
 	initial begin
 		clk = 1'b0;

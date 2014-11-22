@@ -19,22 +19,22 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module candy_top(
-  input clk, reset,  
-  // input [1:0] coin,
-  // input [1:0] btn,
+  input clk, reset,
   input [3:0] key_in,
   output candy,
   output [2:0] change_beg,
   output change_obeg,
   output [7:0] display_column,
   output [7:0] out,
-  output [2:0] col
+  output [2:0] col,
+  output [4:0] can_buy
 );
 
 // wire [2:0] key_out;
 wire [2:0] db_key_out;
 // wire clk1hz;
-wire [7:0] sum;
+wire [3:0] sum;
+wire [7:0] a_sum;
 // wire [3:0] data_in1, data_in0, data_in4;
 wire [2:0] candy_sum;
 
@@ -61,12 +61,26 @@ keypad_map km (
 );
 
 candy_control cc (
-  .clk(clk), .reset(reset), .in(db_key_out), .candy(candy), 
-  .change_beg(change_beg), .change_obeg(change_obeg), .sum(sum), .candy_sum(candy_sum));
+  .clk(clk),
+  .reset(reset), 
+  .in(db_key_out), 
+  .candy(candy), 
+  .change_beg(change_beg), 
+  .change_obeg(change_obeg), 
+  .sum(sum), 
+  .candy_sum(candy_sum),
+  .can_buy(can_buy)
+);
+
+assign a_sum = (sum == 10) ? {4'b0001, 4'b0000} : {4'b1010, sum};
 
 seven_seg_top sst (
-  .clk(clk), .reset(reset), .sum(sum), .candy_sum(candy_sum),  
-  .display_column(display_column), .out(out)
+  .clk(clk), 
+  .reset(reset), 
+  .sum(a_sum), 
+  .candy_sum(candy_sum),  
+  .display_column(display_column), 
+  .out(out)
 );
 
 // seven_seg_top ss (

@@ -20,14 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 module candy_control(
   input clk, reset,
-  // input [1:0] coin,
-  // input [1:0] btn,
   input [2:0] in,
   output reg candy,
   output reg [2:0] change_beg,
   output reg change_obeg,
-  output [7:0] sum,
-  output [2:0] candy_sum
+  output [3:0] sum,
+  output [2:0] candy_sum,
+  output reg [4:0] can_buy
 );
 localparam no_coin = 3'b111, beg = 3'b001, obeg = 3'b010;
 localparam idle = 4'b0000, one = 4'b0001, two = 4'b0010,
@@ -40,7 +39,7 @@ localparam candy_button_pressed = 3'b101, change_button_pressed = 3'b110;
 reg [3:0] ps, ns;
 reg [2:0] count;
 // reg [2:0] temp_count;
-reg [7:0] sum_out;
+reg [3:0] sum_out;
 
 always @(posedge clk or posedge reset)
   if (reset) ps <= idle;
@@ -155,19 +154,21 @@ always @ (posedge clk or posedge reset) begin
     change_beg <= 3'b000; 
     change_obeg <= 1'b0; 
     candy <= 1'b0;
-    sum_out <= 8'b0000_0000;
+    sum_out <= 4'b0000;
   end
   else case (ps)
     idle:       begin
-                  sum_out <= 8'b0000_0000;
+                  sum_out <= 4'b0000;
+                  can_buy <= 5'b00000;
                   change_beg <= 3'b000; 
                   change_obeg <= 1'b0; 
                   candy <= 1'b0;
                 end
 
     one:        begin
-                  sum_out <= {4'b1110, one};
-                  if (count > 0) begin
+                  sum_out <= one;
+                  can_buy <= 5'b00000;
+                  if (candy) begin
                     change_beg <= 3'b001;
                     change_obeg <= 1'b0;
                     candy <= 1'b0;
@@ -175,7 +176,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     two:        begin
-                  sum_out <= {4'b1010, two};
+                  sum_out <= two;
+                  can_buy <= 5'b00001;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (!candy && in == change_button_pressed) begin
                     change_beg <= 3'b010;
@@ -186,7 +188,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     three:      begin
-                  sum_out <= {4'b1010, three};
+                  sum_out <= three;
+                  can_buy <= 5'b00001;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b001;
@@ -202,7 +205,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     four:       begin
-                  sum_out <= {4'b1010, four};
+                  sum_out <= four;
+                  can_buy <= 5'b00011;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b010;
@@ -218,7 +222,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     five:       begin
-                  sum_out <= {4'b1010, five};
+                  sum_out <= five;
+                  can_buy <= 5'b00011;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b011;
@@ -234,7 +239,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     six:        begin
-                  sum_out <= {4'b1010, six};
+                  sum_out <= six;
+                  can_buy <= 5'b00111;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b100;
@@ -250,7 +256,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     seven:      begin
-                  sum_out <= {4'b1010, seven};
+                  sum_out <= seven;
+                  can_buy <= 5'b00111;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b000;
@@ -266,7 +273,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     eight:      begin
-                  sum_out <= {4'b1010, eight};
+                  sum_out <= eight;
+                  can_buy <= 5'b01111;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b001;
@@ -282,7 +290,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     nine:       begin
-                  sum_out <= {4'b1010, nine};
+                  sum_out <= nine;
+                  can_buy <= 5'b01111;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b010;
@@ -298,7 +307,8 @@ always @ (posedge clk or posedge reset) begin
                 end
 
     ten:        begin
-                  sum_out <= {one, idle};
+                  sum_out <= ten;
+                  can_buy <= 5'b11111;
                   if (in == candy_button_pressed) candy <= 1'b1;
                   else if (candy && in == change_button_pressed) begin
                     change_beg <= 3'b011;
@@ -321,7 +331,7 @@ always @ (posedge clk or posedge reset) begin
     //             end
 
     default:    begin
-                  sum_out <= 8'b0000_0000;
+                  sum_out <= 4'b0000;
                   change_beg <= 3'b000; 
                   change_obeg <= 1'b0; 
                   candy <= 1'b0;
@@ -340,7 +350,8 @@ always @(negedge clk) begin
       count <= count + 1;
       // temp_count <= count;
     end
-    else count <= 3'b000;
+    else if (in == change_button_pressed) count <= 3'b000;
+    else count <= count;
   end
 end
 
