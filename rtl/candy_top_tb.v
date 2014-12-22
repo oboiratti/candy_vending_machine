@@ -32,9 +32,6 @@ module candy_top_tb;
 	// Outputs
 	wire [7:0] display_column;
 	wire [7:0] out;
-	wire candy;
-	wire [2:0] change_beg;
-	wire change_obeg;
 	wire [2:0] col;
 	wire [4:0] can_buy;
 
@@ -47,9 +44,6 @@ module candy_top_tb;
 		.key_in(key_in) ,
 		.display_column(display_column), 
 		.out(out), 
-		.candy(candy), 
-		.change_beg(change_beg), 
-		.change_obeg(change_obeg),
 		.col(col),
 		.can_buy(can_buy)
 	);
@@ -65,23 +59,28 @@ module candy_top_tb;
 	initial begin
 		key_in = 4'b0000;
 		reset = 1; #(clk_period / 2);
-		reset = 0; #(clk_period /2 );
-		// #(clk_period / 2);
+		reset = 0; #(clk_period);
+		key_in = 4'b1000; #30; //input 500
+		key_in = 4'b0000; #(clk_period);
+		#(clk_period);#(clk_period);
 
-		//	input 100 and press candy out
-		key_in = 4'b0001; #(clk_period / 2); key_in = 4'b0000; #(clk_period / 2); 
-		key_in = 4'b0001; #(clk_period / 2); key_in = 4'b1000;
+		key_in = 4'b0010; #50; //input 500
+		key_in = 4'b0000; #(clk_period); #(clk_period); #(clk_period);
 
-		// //	input 100 and press candy out
-		// key_in = 4'b0001; #(clk_period * 10000); key_in = 4'b1000;
-		// #(clk_period * 6000); #(clk_period * 6000);
+		key_in = 4'b0010; #50; // input 500
+		key_in = 4'b0000; #(clk_period); #200;
 
-		// for (i = 0; i < 128; i = i + 1) begin
-		// 	key_in = 2 ** i;
-		// 	#4000;
-		// 	// btn = $random;
-		// 	// #3000;
-		// end
+		key_in = 4'b1000; #50; // press vend
+		key_in = 4'b0000; #(clk_period); #(clk_period); #(clk_period);
+
+		key_in = 4'b1000; #50; // press vend again
+		key_in = 4'b0000; #(clk_period); #(clk_period); #(clk_period);
+
+		key_in = 4'b1000; #50; // press vend again
+		key_in = 4'b0000; #(clk_period); #(clk_period); #110;
+
+		key_in = 4'b1000; #50; // press change
+		key_in = 4'b0000; #(clk_period); #(clk_period);
 	end
       
 endmodule

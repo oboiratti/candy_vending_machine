@@ -19,321 +19,279 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module candy_control(
-  input clk, reset,
+  input clk,
   input [2:0] in,
-  output reg candy,
-  output reg [2:0] change_beg,
-  output reg change_obeg,
   output [3:0] sum,
   output [2:0] candy_sum,
   output reg [4:0] can_buy
 );
-localparam no_coin = 3'b111, beg = 3'b001, obeg = 3'b010;
-localparam idle = 4'b0000, one = 4'b0001, two = 4'b0010,
-           three = 4'b0011, four = 4'b0100, five = 4'b0101,
-           six = 4'b0110, seven = 4'b0111, eight = 4'b1000,
-           nine = 4'b1001, ten = 4'b1010; 
-           //candy_out = 4'b1011, change_out = 4'b1100;
 
-localparam candy_button_pressed = 3'b101, change_button_pressed = 3'b110;
+localparam beg        = 3'b001, 
+           obeg       = 3'b010,
+           idle       = 4'b0000, 
+           one        = 4'b0001, 
+           two        = 4'b0010,
+           three      = 4'b0011, 
+           four       = 4'b0100, 
+           five       = 4'b0101,
+           six        = 4'b0110, 
+           seven      = 4'b0111, 
+           eight      = 4'b1000,
+           nine       = 4'b1001, 
+           ten        = 4'b1010, 
+           vend       = 3'b101, 
+           change     = 3'b110,
+           ticker_max = 2'd2;
+
+reg candy;
 reg [3:0] ps, ns;
 reg [2:0] count;
-// reg [2:0] temp_count;
 reg [3:0] sum_out;
+reg [13:0] ticker;
+reg cbp;
 
-always @(posedge clk or posedge reset)
-  if (reset) ps <= idle;
-  else ps <= ns;
+assign a_reset = (in == 3'b111) ? 1'b1 : 1'b0;
 
-always @(*)
+always @(posedge clk or posedge a_reset)
+  if (a_reset) begin 
+    ps <= idle;
+    cbp <= 0;
+  end
+  else begin
+    ps <= ns;
+    if (ps == idle) cbp <= 0;
+    else 
+      if (in == change) cbp <= 1;
+  end
+
+always @(in or ticker or ps or cbp)
   case (ps)
     idle:       begin
-                  // candy = 1'b0; 
                   if (in == beg) ns = one;
                   else if (in == obeg) ns = five;
                   else ns = idle;
                 end
 
     one:        begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = two;
-                  else if (in == obeg) ns = six;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = idle;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = two;
+                    else if (in == obeg) ns = six;
+                    else if (in == change) ns = idle;
+                    else ns = ps;
+                  end
                 end
 
     two:        begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = three;
-                  else if (in == obeg) ns = seven;
-                  else if (in == candy_button_pressed) ns = idle;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = one;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = three;
+                    else if (in == obeg) ns = seven;
+                    else if (in == vend) ns = idle;
+                    else if (in == change) ns = one;
+                    else ns = ps;
+                  end
                 end
 
     three:      begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = four;
-                  else if (in == obeg) ns = eight;
-                  //else ns = ps;
-                  else if (in == candy_button_pressed) ns = one;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = two;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = four;
+                    else if (in == obeg) ns = eight;
+                    else if (in == vend) ns = one;
+                    else if (in == change) ns = two;
+                    else ns = ps;
+                  end
                 end
 
     four:       begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = five;
-                  else if (in == obeg) ns = nine;
-                  //else ns = ps;
-                  else if (in == candy_button_pressed) ns = two;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = three;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = five;
+                    else if (in == obeg) ns = nine;
+                    else if (in == vend) ns = two;
+                    else if (in == change) ns = three;
+                    else ns = ps;
+                  end
                 end
 
     five:       begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = six;
-                  else if (in == obeg) ns = ten;
-                  //else ns = ps;
-                  else if (in == candy_button_pressed) ns = three;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = idle;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = six;
+                    else if (in == obeg) ns = ten;
+                    else if (in == vend) ns = three;
+                    else if (in == change) ns = idle;
+                    else ns = ps;
+                  end
                 end
 
     six:        begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = seven;
-                  //else ns = ps;
-                  else if (in == candy_button_pressed) ns = four;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = one;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = seven;
+                    else if (in == vend) ns = four;
+                    else if (in == change) ns = one;
+                    else ns = ps;
+                  end
                 end
 
     seven:      begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = eight;
-                  //else ns = ps;
-                  else if (in == candy_button_pressed) ns = five;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = two;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = eight;
+                    else if (in == vend) ns = five;
+                    else if (in == change) ns = two;
+                    else ns = ps;
+                  end
                 end
 
     eight:      begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = nine;
-                  //else ns = ps;
-                  else if (in == candy_button_pressed) ns = six;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = three;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = nine;
+                    else if (in == vend) ns = six;
+                    else if (in == change) ns = three;
+                    else ns = ps;
+                  end
                 end
 
     nine:       begin
-                  // candy = 1'b0; 
-                  if (in == beg) ns = ten;
-                  //else ns = ps;
-                  else if (in == candy_button_pressed) ns = seven;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = four;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == beg) ns = ten;
+                    else if (in == vend) ns = seven;
+                    else if (in == change) ns = four;
+                    else ns = ps;
+                  end
                 end
 
     ten:        begin
-                  if (in == candy_button_pressed) ns = eight;
-                  else if (in == change_button_pressed) ns = idle;
-                  else ns = ps;
+                  if (cbp) begin
+                    if (ticker == ticker_max) ns = five;
+                    else ns = ps;
+                  end
+                  else begin
+                    if (in == vend) ns = eight;
+                    else if (in == change) ns = five;
+                    else ns = ps;
+                  end
                 end
 
-    // candy_out:  if (in == change_button_pressed) ns = change_out;
-
-    // change_out: ns = idle;
     default: ns = idle;
   endcase
 
-always @ (posedge clk or posedge reset) begin
-  if (reset) begin 
-    change_beg <= 3'b000; 
-    change_obeg <= 1'b0; 
+always @ (posedge clk or posedge a_reset) begin
+  if (a_reset) begin  
     candy <= 1'b0;
     sum_out <= 4'b0000;
+    can_buy <= 5'b00000;
   end
   else case (ps)
     idle:       begin
                   sum_out <= 4'b0000;
-                  can_buy <= 5'b00000;
-                  change_beg <= 3'b000; 
-                  change_obeg <= 1'b0; 
+                  can_buy <= 5'b00000; 
                   candy <= 1'b0;
                 end
 
     one:        begin
                   sum_out <= one;
                   can_buy <= 5'b00000;
-                  if (candy) begin
-                    change_beg <= 3'b001;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
+                  candy <= 1'b0;
                 end
 
     two:        begin
                   sum_out <= two;
                   can_buy <= 5'b00001;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b010;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     three:      begin
                   sum_out <= three;
                   can_buy <= 5'b00001;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b001;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b011;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     four:       begin
                   sum_out <= four;
                   can_buy <= 5'b00011;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b010;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b100;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     five:       begin
                   sum_out <= five;
                   can_buy <= 5'b00011;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b011;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b000;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     six:        begin
                   sum_out <= six;
                   can_buy <= 5'b00111;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b100;
-                    change_obeg <= 1'b0;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b001;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     seven:      begin
                   sum_out <= seven;
                   can_buy <= 5'b00111;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b000;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b010;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     eight:      begin
                   sum_out <= eight;
                   can_buy <= 5'b01111;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b001;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b011;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     nine:       begin
                   sum_out <= nine;
                   can_buy <= 5'b01111;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b010;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b100;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
     ten:        begin
                   sum_out <= ten;
                   can_buy <= 5'b11111;
-                  if (in == candy_button_pressed) candy <= 1'b1;
-                  else if (candy && in == change_button_pressed) begin
-                    change_beg <= 3'b011;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
-                  else if (!candy && in == change_button_pressed) begin
-                    change_beg <= 3'b101;
-                    change_obeg <= 1'b1;
-                    candy <= 1'b0;
-                  end
+                  if (in == vend) candy <= 1'b1;
                   else candy <= 1'b0;
                 end
 
-    // candy_out:  if (in == change_button_pressed) candy = 1'b1;
-
-    // change_out: begin
-    //               change_beg <= 3'b000;
-    //               change_obeg <= 1'b0;
-    //             end
-
     default:    begin
                   sum_out <= 4'b0000;
-                  change_beg <= 3'b000; 
-                  change_obeg <= 1'b0; 
                   candy <= 1'b0;
                 end
   endcase
@@ -341,20 +299,27 @@ end
 
 //  count the number of candies
 always @(negedge clk) begin
-  if (reset) begin
+  if (a_reset) begin
     count <= 3'b000;
-    // temp_count <= 3'b000;
   end
   else begin
     if (candy) begin
       count <= count + 1;
-      // temp_count <= count;
     end
-    else if (in == change_button_pressed) count <= 3'b000;
+    else if (in == change) count <= 3'b000;
     else count <= count;
   end
 end
 
+// counter for change output
+always @(negedge clk or posedge a_reset)
+  if (a_reset) ticker <= 0;
+  else if (cbp) begin
+    if(ticker > ticker_max) ticker <= 0;
+    else ticker <= ticker + 1;
+  end
+
 assign sum = sum_out;
-assign candy_sum = count;
+assign candy_sum = (a_reset) ? 3'b000 : count;
+
 endmodule

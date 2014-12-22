@@ -20,16 +20,26 @@
 //////////////////////////////////////////////////////////////////////////////////
 module seven_seg_col_sel(
   input clk, reset,
-  input [7:0] sum,
+  input [3:0] sum,
   input [2:0] candy_sum,
   output reg [3:0] data_out,
   output reg [7:0] display_column
 );
 
-localparam idle = 4'b0000, col_1 = 4'b0001, col_2 = 4'b0010, col_3 = 4'b0011, 
-          col_4 = 4'b0100, col_5 = 4'b0101, col_6 = 4'b0110, col_7 = 4'b0111, 
-          col_8 = 4'b1000; 
+localparam idle = 4'b0000, 
+           col_1 = 4'b0001, 
+           col_2 = 4'b0010, 
+           col_3 = 4'b0011, 
+           col_4 = 4'b0100, 
+           col_5 = 4'b0101, 
+           col_6 = 4'b0110, 
+           col_7 = 4'b0111, 
+           col_8 = 4'b1000;
+            
 reg [3:0] ns, ps;
+wire [7:0] a_sum;
+
+assign a_sum = (sum == 10) ? {4'b0001, 4'b0000} : {4'b1010, sum};
 
 always @(posedge clk or posedge reset)
   if (reset) ps <= idle;
@@ -56,13 +66,13 @@ always @(*)
               end
 
     col_3:    begin
-                data_out <= sum[3:0];
+                data_out <= a_sum[3:0];
                 display_column <= 8'b1111_1011;
                 ns <= col_4;
               end
 
     col_4:    begin
-                data_out <= sum[7:4];
+                data_out <= a_sum[7:4];
                 display_column <= 8'b1111_0111;
                 ns <= col_5;
               end

@@ -30,7 +30,7 @@ module keypad_map_tb;
 	reg [3:0] row;
 
 	//Outputs
-	wire [7:0] kp_out;
+	wire [2:0] kp_out;
 	wire [2:0] col;
 
 	// Instantiate the Unit Under Test (UUT)
@@ -51,16 +51,21 @@ module keypad_map_tb;
 
 	initial begin
 		row = 4'b0000;
-		reset = 1; #(clk_period / 2);
+		reset = 1; #(clk_period);
 		reset = 0; #(clk_period);
+		#(clk_period); #(clk_period);
 
-		row = 4'b0001; #200;
+		row = 4'b0001; #100;
+		row = 4'b0000; #20;
 
-		row = 4'b0010; #200;
+		row = 4'b0010; #100;
+		row = 4'b0000; #20;
 
-		row = 4'b0100; #200;
+		row = 4'b1000; #100;
+		row = 4'b0000; #20;
 
-		row = 4'b1000; #200;
+		row = 4'b1000; #100;
+		row = 4'b0000; #20;
 	end
       
 endmodule

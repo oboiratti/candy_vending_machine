@@ -25,10 +25,14 @@ module keypad_map(
   output reg [2:0] kp_out
 );
 
-localparam idle = 3'b000, col_1 = 3'b001, col_2 = 3'b010, col_3 = 3'b100;
+localparam idle  = 3'b000, 
+           col_1 = 3'b001, 
+           col_2 = 3'b010, 
+           col_3 = 3'b100;
+           
+reg [2:0] temp_col;
 wire [6:0] col_row;
 wire [3:0] db_row;
-reg [2:0] temp_col;
 wire ks = |row; //checks if a key is pressed
 
 always @(posedge clk or posedge reset)
@@ -60,23 +64,5 @@ always @(posedge clk or posedge reset)
     7'b010_1000: kp_out = 3'b111; // reset
     default:     kp_out = 3'b000;   
   endcase
-
-// always @(posedge clk or posedge reset)
-//   if (reset) kp_out = 8'b0000_0000;
-//   else case (col_row)
-//     7'b010_1000: kp_out = 8'b0000_0000;
-//     7'b001_0001: kp_out = 8'b0000_0001;
-//     7'b010_0001: kp_out = 8'b0000_0010;
-//     7'b100_0001: kp_out = 8'b0000_0011;
-//     7'b001_0010: kp_out = 8'b0000_0100;
-//     7'b010_0010: kp_out = 8'b0000_0101;
-//     7'b100_0010: kp_out = 8'b0000_0110;
-//     7'b001_0100: kp_out = 8'b0000_0111;
-//     7'b010_0100: kp_out = 8'b0000_1000;
-//     7'b100_0100: kp_out = 8'b0000_1001;
-//     7'b001_1000: kp_out = 8'b0001_0000;
-//     7'b100_1000: kp_out = 8'b0001_0001;
-//     default:     kp_out = kp_out;   
-//   endcase
 
 endmodule

@@ -27,7 +27,7 @@ module seven_seg_top_tb;
 	// Inputs
 	reg clk;
 	reg reset;
-	reg [7:0] sum;
+	reg [3:0] sum;
   reg [2:0] candy_sum;
   
 
@@ -55,6 +55,8 @@ module seven_seg_top_tb;
 
 	initial begin
 		reset = 0;
+		sum = 0;
+		candy_sum = 0;
 		#(clk_period); reset = 1;
 		#(clk_period); reset = 0;
 		

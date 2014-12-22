@@ -7,8 +7,8 @@
    <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
-         <ClosedNode>/candy_top E:|projects|verilog|candy_vending_system|rtl|candy_top.v/km - keypad_map</ClosedNode>
          <ClosedNode>/candy_top E:|projects|verilog|candy_vending_system|rtl|candy_top.v/sst - seven_seg_top</ClosedNode>
+         <ClosedNode>/keypad_map_top E:|projects|verilog|candy_vending_system|rtl|keypad_map_top.v</ClosedNode>
          <ClosedNode>/keypad_map_top E:|projects|verilog|candy_vending_system|rtl|keypad_map_top.v/sst - seven_seg_top</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
@@ -25,13 +25,13 @@
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem/>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem/>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
@@ -59,29 +59,29 @@
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_VERILOG" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
-         <ClosedNode>Design Utilities</ClosedNode>
          <ClosedNode>Implement Design/Map</ClosedNode>
          <ClosedNode>Implement Design/Place &amp; Route</ClosedNode>
          <ClosedNode>Implement Design/Translate</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Generate Programming File</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >4</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000e7000000010000000100000000000000000000000064ffffffff000000810000000000000001000000e70000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000fd000000010000000100000000000000000000000064ffffffff000000810000000000000001000000fd0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Generate Programming File</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff00000000000000020000011b0000011b01000000050100000002</SourceProcessView>
-   <CurrentView>Implementation</CurrentView>
+   <CurrentView>Behavioral Simulation</CurrentView>
    <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
          <ClosedNode>/bcd_to_seven_seg_dec_tb E:|projects|verilog|candy_vending_system|rtl|bcd_to_seven_seg_dec_tb.v</ClosedNode>
          <ClosedNode>/candy_control_tb E:|projects|verilog|candy_vending_system|rtl|candy_control_tb.v</ClosedNode>
-         <ClosedNode>/candy_top_tb E:|projects|verilog|candy_vending_system|rtl|candy_top_tb.v</ClosedNode>
+         <ClosedNode>/candy_top_tb E:|projects|verilog|candy_vending_system|rtl|candy_top_tb.v/uut - candy_top/km - keypad_map</ClosedNode>
          <ClosedNode>/candy_top_tb E:|projects|verilog|candy_vending_system|rtl|candy_top_tb.v/uut - candy_top/ss - seven_seg_top</ClosedNode>
+         <ClosedNode>/candy_top_tb E:|projects|verilog|candy_vending_system|rtl|candy_top_tb.v/uut - candy_top/sst - seven_seg_top</ClosedNode>
          <ClosedNode>/clock_divider_1khz_to_1hz_tb E:|projects|verilog|candy_vending_system|rtl|clock_divider_1khz_to_1hz_tb.v</ClosedNode>
          <ClosedNode>/debouncer_tb E:|projects|verilog|candy_vending_system|rtl|debouncer_tb.v</ClosedNode>
          <ClosedNode>/key_detector_tb E:|projects|verilog|candy_vending_system|rtl|key_detector_tb.v</ClosedNode>
@@ -94,13 +94,13 @@
          <ClosedNode>/seven_seg_top_tb E:|projects|verilog|candy_vending_system|rtl|seven_seg_top_tb.v</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>candy_top_tb (E:/projects/verilog/candy_vending_system/rtl/candy_top_tb.v)</SelectedItem>
+         <SelectedItem>seven_seg_top_tb (E:/projects/verilog/candy_vending_system/rtl/seven_seg_top_tb.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >4</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000019c000000020000000000000000000000000200000064ffffffff0000008100000003000000020000019c0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>candy_top_tb (E:/projects/verilog/candy_vending_system/rtl/candy_top_tb.v)</CurrentItem>
+      <CurrentItem>seven_seg_top_tb (E:/projects/verilog/candy_vending_system/rtl/seven_seg_top_tb.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -125,7 +125,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000fd000000010000000100000000000000000000000064ffffffff000000810000000000000001000000fd0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>Simulate Behavioral Model</CurrentItem>
    </ItemView>

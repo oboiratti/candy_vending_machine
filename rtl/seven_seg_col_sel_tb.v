@@ -27,7 +27,7 @@ module seven_seg_col_sel_tb;
 	// Inputs
 	reg clk;
 	reg reset;
-	reg [7:0] sum;
+	reg [3:0] sum;
 	reg [2:0] candy_sum;
 
 	// Outputs
